@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/tarefas/{{tarefaId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "titulo": "Estudar APIs REST",
+      "descricao": "Tarefa atualizada pelo Postman",
+      "concluida": true
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test('Tarefa atualizada', function () { pm.response.to.have.status(200); });
+order: 4000

@@ -1,0 +1,5 @@
+$kind: collection
+description: CRUD RESTful de tarefas e consulta ao clima atual via Open-Meteo.
+variables:
+  baseUrl: http://127.0.0.1:8000/api/v1
+  tarefaId: "1"

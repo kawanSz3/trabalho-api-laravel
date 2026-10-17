@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{baseUrl}}/tarefas/{{tarefaId}}"
+method: DELETE
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: pm.test('Tarefa excluída sem conteúdo', function () { pm.response.to.have.status(204); });
+order: 5000

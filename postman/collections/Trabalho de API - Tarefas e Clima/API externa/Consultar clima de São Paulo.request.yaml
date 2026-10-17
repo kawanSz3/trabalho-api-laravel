@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{baseUrl}}/clima?cidade=São%20Paulo"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Clima consultado', function () { pm.response.to.have.status(200); });
+      pm.test('Resposta contém clima atual', function () { pm.expect(pm.response.json()).to.have.property('clima_atual'); });
+order: 1000

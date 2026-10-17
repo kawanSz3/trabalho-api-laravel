@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{baseUrl}}/tarefas"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Lista retornada', function () { pm.response.to.have.status(200); });
+      pm.test('Resposta possui coleção data', function () { pm.expect(pm.response.json()).to.have.property('data'); });
+order: 1000

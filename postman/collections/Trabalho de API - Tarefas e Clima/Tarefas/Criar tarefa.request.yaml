@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/tarefas"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "titulo": "Estudar consumo de API",
+      "descricao": "Consultar o clima pelo Open-Meteo",
+      "concluida": false
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Tarefa criada', function () { pm.response.to.have.status(201); });
+      const body = pm.response.json();
+      pm.collectionVariables.set('tarefaId', body.data.id);
+order: 2000
